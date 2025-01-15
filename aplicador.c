@@ -31,6 +31,7 @@ int main() {
 	}
 
 	int opt = 1;
+	//SO_REUSEADDR permite o reuso de enderecos locais para esse socket
 	if (setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt))) {
 		perror("Erro ao tentar ao tentar configurar o socket\n");
 		exit(EXIT_ERROR_SOCKET_CONFIG);
@@ -67,7 +68,7 @@ int main() {
 	while (1) {
 		numRead = read(new_socket, buffer, PACKET_SIZE - 1);
 		printf("Buffer: %s\n", buffer);
-		
+
 		if (strcmp(buffer, "END") == 0) {
 			send(new_socket, "OK", strlen("OK"), 0);
     		printf("Mensagem de OK enviada\n");
