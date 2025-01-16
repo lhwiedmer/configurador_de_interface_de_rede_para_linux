@@ -4,6 +4,10 @@
 		"socket.h": "c",
 		"cmath": "c",
 		"inet.h": "c",
-		"if.h": "c"
+		"if.h": "c",
+		"in.h": "c",
+		"unistd.h": "c",
+		"stdlib.h": "c",
+		"string.h": "c"
 	}
 }
