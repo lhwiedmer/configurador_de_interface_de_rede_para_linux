@@ -115,7 +115,8 @@ void configure(int client_socket, char* buffer) {
 	} else if (buffer[0] == '3') {
 		fprintf(stderr, "Falhou ao tentar configurar a máscara de subrede\n");
 	} else {
-		fprintf(stderr, "Erro %c nao eh conhecido\n", buffer[0]);
+		fprintf(stderr, "Erro %c nao eh conhecido, provável problema na comunicação comunicação, terminando programa\n", buffer[0]);
+		exit(EXIT_ERROR_COMMUNICATION);
 	}
 }
 

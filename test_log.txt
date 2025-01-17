@@ -3,11 +3,11 @@
 	Os dados de entrada e saída do programa interativo serão mostrados.
 
 2.Testes
-1.1 Tentar rodar o programa interativo sem o programa aplicador estar ativo
+2.1 Tentar rodar o programa interativo sem o programa aplicador estar ativo
 	Erro ao tentar se conectar com o servidor
 	*Program terminado abruptamente
 
-1.2 Tentar configurar uma interface com o programa aplicador sem sudo
+2.2 Tentar configurar uma interface com o programa aplicador sem sudo
 	Digite um dos números para realizar um comando:
 	1 - Configurar o endereco IP de uma interface
 	2 - Mostrar na tela o endereco IP de uma interface especificada
@@ -19,7 +19,7 @@
 	Mensagem enviada
 	Falhou ao tentar configurar o endereço IP
 
-1.2 Tentar ver o IP de uma interface com aplicador sem sudo
+2.2 Tentar ver o IP de uma interface com aplicador sem sudo
 	Digite um dos números para realizar um comando:
 	1 - Configurar o endereco IP de uma interface
 	2 - Mostrar na tela o endereco IP de uma interface especificada
@@ -29,7 +29,7 @@
 	Mensagem enviada
 	Interface: wlp0s20f3, Configured IP:192.168.4.13/16
 
-1.3 Tentar terminar o programa com o comando devido
+2.3 Tentar terminar o programa com o comando devido
 	Digite um dos números para realizar um comando:
 	1 - Configurar o endereco IP de uma interface
 	2 - Mostrar na tela o endereco IP de uma interface especificada
@@ -38,7 +38,7 @@
 	Mensagem enviada
 	Resposta OK do aplicador, terminando programa
 
-1.4 Tentar configurar uma interface com IP's inválidos
+2.4 Tentar configurar uma interface com IP's inválidos
 	Digite um dos números para realizar um comando:
 	1 - Configurar o endereco IP de uma interface
 	2 - Mostrar na tela o endereco IP de uma interface especificada
@@ -51,14 +51,14 @@
 	IP invalido, insira um IP valido: 1
 	IP invalido, insira um IP valido: 
 
-1.5 Tentar configurar uma interface com uma máscara de subrede inválida
+2.5 Tentar configurar uma interface com uma máscara de subrede inválida
 	Informe a nova mascara de sub-rede: 255.0.0
 	Mascara invalida, insira uma mascara valida: 255.0.255.0
 	Mascara invalida, insira uma mascara valida: 128.0.255.1  
 	Mascara invalida, insira uma mascara valida: 0.0.0.255
 	Mascara invalida, insira uma mascara valida: 
 
-1.6 Tentar configurar uma interface de rede inativa
+2.6 Tentar configurar uma interface de rede inativa
 	Digite um dos números para realizar um comando:
 	1 - Configurar o endereco IP de uma interface
 	2 - Mostrar na tela o endereco IP de uma interface especificada
@@ -70,7 +70,7 @@
 	Mensagem enviada
 	Interface inativa
 
-1.7 Tentar ver o IP de uma interface inativa
+2.7 Tentar ver o IP de uma interface inativa
 	Digite um dos números para realizar um comando:
 	1 - Configurar o endereco IP de uma interface
 	2 - Mostrar na tela o endereco IP de uma interface especificada
@@ -80,7 +80,7 @@
 	Mensagem enviada
 	Interface inativa
 
-1.8 Tentar ver o IP de uma interface ativa
+2.8 Tentar ver o IP de uma interface ativa
 	Digite um dos números para realizar um comando:
 	1 - Configurar o endereco IP de uma interface
 	2 - Mostrar na tela o endereco IP de uma interface especificada
@@ -90,7 +90,7 @@
 	Mensagem enviada
 	Interface: wlp0s20f3, Configured IP:192.168.4.13/16
 
-1.9 Tentar configurar o IP da mesma interface com parâmetros validos
+2.9 Tentar configurar o IP da mesma interface com parâmetros validos
 	Digite um dos números para realizar um comando:
 	1 - Configurar o endereco IP de uma interface
 	2 - Mostrar na tela o endereco IP de uma interface especificada
@@ -102,7 +102,7 @@
 	Mensagem enviada
 	Configuração realizada com sucesso
 
-1.10 Tentar ver o IP da mesma interface após a mudança
+2.10 Tentar ver o IP da mesma interface após a mudança
 	Digite um dos números para realizar um comando:
 	1 - Configurar o endereco IP de uma interface
 	2 - Mostrar na tela o endereco IP de uma interface especificada

@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <netinet/in.h>
 #include <sys/socket.h>
-#include <unistd.h>
 #include <sys/ioctl.h>
+#include <unistd.h>
+#include <netinet/in.h>
 #include <net/if.h>
 #include <arpa/inet.h>
 
@@ -12,12 +12,11 @@
 #define PORT 8000
 
 #define EXIT_ERROR_SOCKET 1
-#define EXIT_ERROR_INVALID_IP 2
-#define EXIT_ERROR_BINDING 3
-#define EXIT_ERROR_COMMUNICATION 4
-#define EXIT_ERROR_SOCKET_CONFIG 5
-#define EXIT_ERROR_LISTEN 6
-#define EXIT_ERROR_ACCEPT 7
+#define EXIT_ERROR_BINDING 2
+#define EXIT_ERROR_COMMUNICATION 3
+#define EXIT_ERROR_SOCKET_CONFIG 4
+#define EXIT_ERROR_LISTEN 5
+#define EXIT_ERROR_ACCEPT 6
 
 #define CONFIGURE '1'
 #define SHOW '2'
@@ -261,7 +260,8 @@ int main() {
 				endProgram(new_socket, server_fd);
 				return 0;
 			default:
-				fprintf(stderr, "Comando desconhecido\n");
+				fprintf(stderr, "Comando desconhecido, provável problema de comunicação, terminando o programa\n");
+				exit(EXIT_ERROR_COMMUNICATION);
 				break;
 		}
 	}
