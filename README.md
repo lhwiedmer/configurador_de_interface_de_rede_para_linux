@@ -8,7 +8,7 @@ Aviso: Essa aplicação foi desenvolvida para Linux OS, e provavelmente não fun
 
 2. Método de Uso
 
-	Para compilar a aplicação, faça em um terminal: "gcc interativo.c -o interativo" e "gcc aplicador.c -o aplicador".
+	Para compilar a aplicação, faça em um terminal: "make".
 	Após isso, abra dois terminais Linux, e estando no diretório com o programa, digite "sudo ./aplicador",
 	no outro terminal digite "./interativo" e siga as instruções. É importante que o aplicador seja usado com sudo, ou o programa
 	não poderá configurar nenhuma interface por conta de falta de permissões. Também é importante que o aplicador seja usado usado antes do interativo,
@@ -22,7 +22,7 @@ Aviso: Essa aplicação foi desenvolvida para Linux OS, e provavelmente não fun
 
 		1 - Para falha ao tentar criar um socket;
 		2 - Para falha ao tentar se conectar com aplicador;
- 		3 - Para falha em uma função de send, read ou se uma resposta inesperada for recebida.
+ 		3 - Para falha em uma função de send, read ou se uma resposta inesperada for recebida;
 
 	O programa aplicador pode terminar abruptamente retornado esses códigos:
 

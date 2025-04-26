@@ -109,7 +109,7 @@ void configure(int new_socket, char* buffer) {
 	}
 }
 
-//Escreve uma mensagem formata em ret com o IP e com a subnet mask da interface requisitada, retorna 0 no caso de sucesso e 1, 2
+//Escreve uma mensagem formata em ret com o IP e com a subnet mask da interface requisitada, retorna 0 no caso de sucesso e 1, 2 no caso de falha
 int getInterfaceIP(char* iface, char* ret) {
 	int sockfd;
 	struct ifreq ifr;
@@ -156,7 +156,7 @@ int getInterfaceIP(char* iface, char* ret) {
     }
 
 	//Monta a mensagem formatada a ser enviada para o programa interativo
-	sprintf(ret, "0]Interface: %s, Configured IP:%s/%d", iface, IPaddr, prefix);
+	sprintf(ret, "0[Interface: %s, Configured IP:%s/%d", iface, IPaddr, prefix);
 	close(sockfd);
 	return 0;
 }
@@ -172,10 +172,10 @@ void show(int new_socket, char* buffer) {
 	char ret[100];
 	int result = getInterfaceIP(interface, ret);
 
-
+	char result_char = result + '0';
 	if (result > 0) { //Tenta mandar um codigo de erro para o programa interativo, termina o program em caso de falha
 		char asw[2];
-		sprintf(asw, "%d", result);
+		sprintf(asw, "%c", result_char);
 		if (send(new_socket, asw, 2, 0) == -1) {
 			fprintf(stderr, "Erro ao tentar enviar mensagem, terminando programa\n");
 			exit(EXIT_ERROR_COMMUNICATION);

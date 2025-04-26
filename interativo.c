@@ -11,6 +11,7 @@
 #define EXIT_ERROR_SOCKET 1
 #define EXIT_ERROR_CONNECTION 2
 #define EXIT_ERROR_COMMUNICATION 3
+#define EXIT_ERROR_INPUT 4
 
 #define CONFIGURE 1
 #define SHOW 2
@@ -68,26 +69,37 @@ int verifySubnetMask(char* subnetMask) {
 void configure(int client_socket, char* buffer) {
 	printf("Informe o nome da interface de rede: ");
 	char interface[50];
-	scanf("%s", interface);
+	while (scanf("%49s", interface) != 1) {
+    	fprintf(stderr, "Input invalido, tente novamente.\n");
+	}
 
 	printf("Informe o novo endereco IP da rede: ");
 	char IPaddr[20];
-	scanf("%s", IPaddr);
+	while (scanf("%19s", IPaddr) != 1) {
+    	fprintf(stderr, "Input invalido, tente novamente.\n");
+	}
     struct in_addr addr;
 
 	while(!inet_pton(AF_INET, IPaddr, &addr)) { //Verifica se o IP eh válido
 		fprintf(stderr, "IP invalido, insira um IP valido: ");
 		memset(IPaddr, 0, sizeof(IPaddr));
-		scanf("%s", IPaddr);
+		while (scanf("%19s", IPaddr) != 1) {
+    		fprintf(stderr, "Input invalido, tente novamente.\n");
+		}
 	}
 
 	printf("Informe a nova mascara de sub-rede: ");
 	char subnetMask[20];
-	scanf("%s", subnetMask);
+	while (scanf("%19s", subnetMask) != 1) {
+    	fprintf(stderr, "Input invalido, tente novamente.\n");
+	}
+
 	while(!verifySubnetMask(subnetMask)) {
 		fprintf(stderr, "Mascara invalida, insira uma mascara valida: ");
 		memset(subnetMask, 0, sizeof(subnetMask));
-		scanf("%s", subnetMask);
+		while (scanf("%19s", subnetMask) != 1) {
+    		fprintf(stderr, "Input invalido, tente novamente.\n");
+		}
 	}
 
 	sprintf(buffer, "1]%s]%s]%s", interface, IPaddr, subnetMask);
@@ -123,11 +135,13 @@ void configure(int client_socket, char* buffer) {
 void show(int client_socket, char* buffer) {
 	printf("Informe o nome da interface de rede: ");
 	char interface[50];
-	scanf("%s", interface);
+	while (scanf("%49s", interface) != 1) {
+    	fprintf(stderr, "Input invalido, tente novamente.\n");
+	}
 	sprintf(buffer, "2]%s", interface);
 
 	//Tenta enviar a interface para o aplicador, termina o programa em caso de falha
-	if (send(client_socket, buffer, strlen(buffer), 0) == -1) {
+	while (send(client_socket, buffer, strlen(buffer), 0) == -1) {
 		fprintf(stderr,"Erro ao tentar enviar a mensagem, terminando o programa\n");
 		exit(EXIT_ERROR_COMMUNICATION);
 	}
@@ -191,7 +205,9 @@ int main() {
 	while (1) {
 		memset(buffer, 0, PACKET_SIZE);
 		commands();
-		scanf("%d", &command);
+		while (scanf("%d", &command) != 1) {
+			fprintf(stderr, "Input invalido, tente novamente.\n");
+		}
 		switch (command) {
 		case CONFIGURE:
 			configure(client_socket, buffer);
